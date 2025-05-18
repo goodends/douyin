@@ -6,6 +6,7 @@ import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import { fileURLToPath, URL } from 'node:url'
 import { getLastCommit } from 'git-last-commit'
 import VueMacros from 'unplugin-vue-macros/vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 const lifecycle = process.env.npm_lifecycle_event
 
@@ -33,6 +34,7 @@ export default defineConfig((): Promise<UserConfig> => {
           }),
           // Vue(),
           // VueJsx(),
+          VueDevTools(),
           lifecycle === 'report' ? (visualizer({ open: false }) as any as PluginOption) : null,
           importToCDN({
             modules: [
